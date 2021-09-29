@@ -19,16 +19,18 @@ var prometheusConfigFilePath string
 var scrapeConfigFilePath string
 
 func main() {
+	
+	var isPresent bool
 	log.Println("Prometheus configuration reloader started")
 	aws.InitializeAWSSession()
 	
-	PrometheusConfigParameter, present = os.LookupEnv("ECS_PROMETHEUES_CONFIG")
-	if !present {
+	PrometheusConfigParameter, isPresent = os.LookupEnv("ECS_PROMETHEUES_CONFIG")
+	if !isPresent {
 		PrometheusConfigParameter = "ECS-Prometheus-Configuration"
 	}
 
-	DiscoveryNamespacesParameter, present = os.LookupEnv("ECS_SD_NAMESPACE")
-	if !present {
+	DiscoveryNamespacesParameter, isPresent = os.LookupEnv("ECS_SD_NAMESPACE")
+	if !isPresent {
 		DiscoveryNamespacesParameter = "ECS-ServiceDiscovery-Namespaces"
 	}
 	
