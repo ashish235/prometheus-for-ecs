@@ -13,7 +13,8 @@ import (
 )
 
 
-
+var DiscoveryNamespacesParameter string
+var PrometheusConfigParameter string
 var prometheusConfigFilePath string
 var scrapeConfigFilePath string
 
