@@ -12,10 +12,7 @@ import (
 	"github.com/aws-samples/prometheus-for-ecs/pkg/aws"
 )
 
-const (
-	PrometheusConfigParameter    = "ECS-Prometheus-Configuration"
-	DiscoveryNamespacesParameter = "ECS-ServiceDiscovery-Namespaces"
-)
+
 
 var prometheusConfigFilePath string
 var scrapeConfigFilePath string
