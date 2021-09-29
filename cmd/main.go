@@ -22,12 +22,12 @@ func main() {
 	log.Println("Prometheus configuration reloader started")
 	aws.InitializeAWSSession()
 	
-	PrometheusConfigParameter, present := os.LookupEnv("ECS_PROMETHEUES_CONFIG")
+	PrometheusConfigParameter, present = os.LookupEnv("ECS_PROMETHEUES_CONFIG")
 	if !present {
 		PrometheusConfigParameter = "ECS-Prometheus-Configuration"
 	}
 
-	DiscoveryNamespacesParameter, present := os.LookupEnv("ECS_SD_NAMESPACE")
+	DiscoveryNamespacesParameter, present = os.LookupEnv("ECS_SD_NAMESPACE")
 	if !present {
 		DiscoveryNamespacesParameter = "ECS-ServiceDiscovery-Namespaces"
 	}
