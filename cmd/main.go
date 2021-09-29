@@ -23,7 +23,18 @@ var scrapeConfigFilePath string
 func main() {
 	log.Println("Prometheus configuration reloader started")
 	aws.InitializeAWSSession()
+	
+	PrometheusConfigParameter, present := os.LookupEnv("ECS_PROMETHEUES_CONFIG")
+	if !present {
+		PrometheusConfigParameter = "ECS-Prometheus-Configuration"
+	}
 
+	DiscoveryNamespacesParameter, present := os.LookupEnv("ECS_SD_NAMESPACE")
+	if !present {
+		DiscoveryNamespacesParameter = "ECS-ServiceDiscovery-Namespaces"
+	}
+	
+	
 	configFileDir, present := os.LookupEnv("CONFIG_FILE_DIR")
 	if !present {
 		configFileDir = "/etc/config/"
